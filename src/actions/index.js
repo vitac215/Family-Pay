@@ -14,7 +14,6 @@ export function loginAction({ username, password }) {
       .then(response => {
         if (response.message === success) {
           // request is good,
-          //   - update state to indicate that user is authenticated
           //   - save token
           localStorage.setItem('token', response.data.token);
           //   - redirect to /face_login
@@ -32,6 +31,7 @@ export function faceLogin({ username, image }) {
     axios.post(`${ROOT_URL}/compare_faces`, { username, image })
       .then(response => {
         if (response.message === success) {
+          //   - update state to indicate that user is authenticated
           dispatch({ type: AUTH_USER });
           browserHistory.push('/main');
         } else {
