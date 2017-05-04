@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
-import login from '/style/login.css';
 
 import * as actions from '../actions';
 
@@ -26,19 +25,17 @@ class IndexLogin extends Component {
 
     return (
       <div id="inner-container">
-        <img src="/img/logo.svg" width="220px" height="138px" />
+        <img className="logo" src="/img/logo.svg" />
         <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
           <div className="form-group">
-            <label>Username</label>
-            <input type="text" className="form-control" {...username} />
+            <input type="text" className="form-control myinput" {...username} placeholder="Username" autoComplete="off" />
             <div className="text-help">
               {username.touched ? username.error : ''}
             </div>
           </div>
 
           <div className="form-group">
-            <label>Password</label>
-            <input type="password" className="form-control" {...password} />
+            <input type="password" className="form-control myinput" {...password} placeholder="Password" autoComplete="off" />
             <div className="text-help">
               {password.touched ? password.error : ''}
             </div>
@@ -46,7 +43,7 @@ class IndexLogin extends Component {
 
           {this.renderAlert()}
 
-          <button type="submit" className="btn btn-primary">Login</button>
+          <button type="submit" className="primary-button">Next</button>
         </form>
       </div>
 
