@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
+import login from '/style/login.css';
 
 import * as actions from '../actions';
 
@@ -24,27 +25,31 @@ class IndexLogin extends Component {
     const { fields: {username, password} } = this.props;
 
     return (
-      <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
-        <div className="form-group">
-          <label>Username</label>
-          <input type="text" className="form-control" {...username} />
-          <div className="text-help">
-            {username.touched ? username.error : ''}
+      <div id="inner-container">
+        <img src="/img/logo.svg" width="220px" height="138px" />
+        <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
+          <div className="form-group">
+            <label>Username</label>
+            <input type="text" className="form-control" {...username} />
+            <div className="text-help">
+              {username.touched ? username.error : ''}
+            </div>
           </div>
-        </div>
 
-        <div className="form-group">
-          <label>Password</label>
-          <input type="password" className="form-control" {...password} />
-          <div className="text-help">
-            {password.touched ? password.error : ''}
+          <div className="form-group">
+            <label>Password</label>
+            <input type="password" className="form-control" {...password} />
+            <div className="text-help">
+              {password.touched ? password.error : ''}
+            </div>
           </div>
-        </div>
 
-        {this.renderAlert()}
+          {this.renderAlert()}
 
-        <button type="submit" className="btn btn-primary">Login</button>
-      </form>
+          <button type="submit" className="btn btn-primary">Login</button>
+        </form>
+      </div>
+
     );
   }
 } // end of class
