@@ -47,6 +47,11 @@ class IndexLogin extends Component {
         </form>
       </div>
 
+<<<<<<< HEAD
+        <button action="submit" className="btn btn-primary">Login</button>
+      </form>
+=======
+>>>>>>> 36f998956fd7002abf706443cebefd3438aa79d9
     );
   }
 } // end of class
