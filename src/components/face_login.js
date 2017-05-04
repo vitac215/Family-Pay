@@ -13,6 +13,7 @@ class FaceLogin extends Component {
         <div>You can login with your face now!</div>
         {/* <img src={require('../../img/user.png')}></img> // png doesnt work? */}
         <input type="file" accept="image/*" capture="camera" />
+        <button type="submit" className="btn btn-primary">Upload</button>
       </div>
     )
   }
