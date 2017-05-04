@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE } from './types';
 
 // Action type
 export const LOGIN = 'LOGIN';
@@ -15,6 +15,7 @@ export function loginAction({ username, password }) {
         if (response.message === success) {
           // request is good,
           //   - save token
+          localStorage.setItem('username', response.data.username);
           localStorage.setItem('token', response.data.token);
           //   - redirect to /face_login
           browserHistory.push('/face_login');
@@ -26,13 +27,23 @@ export function loginAction({ username, password }) {
   }
 }
 
-export function faceLogin({ username, image }) {
+export function uploadImg(file) {
+  return {
+    type: FILE,
+    payload: file
+  }
+}
+
+export function faceLogin(image) {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/compare_faces`, { username, image })
       .then(response => {
         if (response.message === success) {
           //   - update state to indicate that user is authenticated
           dispatch({ type: AUTH_USER });
+          //   - update state to indicate the type of the user
+          //   check
+          dispatch({ type: response.user_type });
           browserHistory.push('/main');
         } else {
           dispatch(authError('You don\'t seem to be a registered user'));

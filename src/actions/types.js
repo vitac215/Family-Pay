@@ -4,3 +4,5 @@ export const AUTH_ERROR = 'auth_error';
 
 export const PARENT = 'parent';
 export const CHILD = 'child';
+
+export const FILE = 'file';
