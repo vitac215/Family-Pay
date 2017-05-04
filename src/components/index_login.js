@@ -43,7 +43,7 @@ class IndexLogin extends Component {
 
         {this.renderAlert()}
 
-        <button type="submit" className="btn btn-primary">Login</button>
+        <button action="submit" className="btn btn-primary">Login</button>
       </form>
     );
   }

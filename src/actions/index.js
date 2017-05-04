@@ -6,23 +6,31 @@ import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE } from './types';
 // Action type
 export const LOGIN = 'LOGIN';
 
-const ROOT_URL = '/api';
+const ROOT_URL = 'http://10.141.93.202:3000/api';
 
 export function loginAction({ username, password }) {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/login`, { username, password })
       .then(response => {
-        if (response.message === success) {
+        console.log('message', response.message);
+        // if (response.message === 'Success') {
           // request is good,
           //   - save token
           localStorage.setItem('username', response.data.username);
           localStorage.setItem('token', response.data.token);
           //   - redirect to /face_login
           browserHistory.push('/face_login');
-        } else {
-          // show an error to the user
-          dispatch(authError('The username or the password is incorrect.'));
-        }
+        // } else {
+        //   // show an error to the user
+        //   dispatch(authError('The username or the password is incorrect.'));
+        // }
+      })
+      .catch((response) => {
+        console.log('fail', response);
+        // If request is bad...
+        // - Show an error to the user
+        // dispatch(authError('Server error'));
+        dispatch(authError(response.error));
       });
   }
 }
