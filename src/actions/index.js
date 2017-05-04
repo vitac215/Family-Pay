@@ -26,7 +26,7 @@ export function loginAction({ username, password }) {
         // }
       })
       .catch((response) => {
-        console.log('fail', response);
+        console.log('fail response', response);
         // If request is bad...
         // - Show an error to the user
         // dispatch(authError('Server error'));
