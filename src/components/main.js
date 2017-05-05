@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import {PARENT, CHILD} from '../actions/types';
 import MainParent from './main_parent';
-// import MainChild from './main_child';
+import MainChild from './main_child';
 
 class Main extends Component {
   static contextTypes = {
@@ -12,21 +12,25 @@ class Main extends Component {
   };
 
   render() {
-    // Adult
-    if (this.props.authenticated && this.props.user_type === PARENT) {
-      return (
-        <MainParent />
-      )
-    }
-    // Child
-    else if (this.props.authenticated && this.props.user_type === CHILD) {
-      // <MainChild />
-    }
-    // Not authenticated
-    else {
-      // redirect to index login page
-      this.context.router.push('/');
-    }
+    console.log("main props", this.props);
+    // // Adult
+    // if (this.props.authenticated && this.props.user_type === PARENT) {
+    //   return (
+    //     <MainParent />
+    //   )
+    // }
+    // // Child
+    // else if (this.props.authenticated && this.props.user_type === CHILD) {
+    //   return (
+    //     <MainChild />
+    //   )
+    // }
+    //
+
+    // test
+    return (
+      <MainChild />
+    )
   }; // end render
 } // end class
 

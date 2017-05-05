@@ -10,6 +10,8 @@ import App from './components/app';
 
 import RequireAuth from './components/require_auth';
 
+import { AUTH_USER } from './actions/types';
+
 import IndexLogin from './components/index_login';
 import FaceLogin from './components/face_login';
 import Main from './components/main';
@@ -18,11 +20,19 @@ import AdminDashboard from './components/admin_dashboard';
 import AddMember from './components/add_member';
 import ManageMember from './components/manage_member';
 
-
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
+
+const token = localStorage.getItem('token');
+// If we have a token, consider the user to be signed in
+if (token) {
+  // we need to update application state
+  store.dispatch({ type: AUTH_USER });
+}
+
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={IndexLogin} />

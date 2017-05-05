@@ -21,6 +21,7 @@ class FaceLogin extends Component {
   }
 
   onImageChange(e) {
+    e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
     console.log("file", file);
@@ -30,14 +31,17 @@ class FaceLogin extends Component {
       alert("Image is too big! Please upload an image that's less than 2MB");
       e.target.value = "";
     } else {
-      // console.log('file', file);
+      console.log('file', file);
       // convert to base 64
-      reader.readAsDataURL(file);
+      // reader.readAsDataURL(file);
       reader.onloadend = () => {
         let converted_file = reader.result;
-        // console.log('converted_file', converted_file);
+        converted_file = converted_file;
+        console.log('converted_file', converted_file);
         this.props.uploadImg(converted_file);
+        // console.log("test",base64.decode(converted_file));
       }
+      // this.props.uploadImg(file);
     }
   }
 
@@ -73,6 +77,7 @@ class FaceLogin extends Component {
 
 
         <img id="default-user-avatar" className="img-circle" src={this.props.file ? this.props.file : imgSrc} />
+
         <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
           <div id="upload-photo-div">
             <div style={{height: 90 + 'px'}}></div>
@@ -83,8 +88,7 @@ class FaceLogin extends Component {
                 type="file"
                 accept="image/*"
                 capture="camera"
-                onChange={this.onImageChange.bind(this)}
-                />
+                onChange={this.onImageChange.bind(this)} />
             </label>
           </div>
           <div style={{height: 20 + 'px'}}></div>
@@ -94,6 +98,9 @@ class FaceLogin extends Component {
           </button>
           </div>
         </form>
+
+
+
       </div>
     ) // end of return
   } // end of render
