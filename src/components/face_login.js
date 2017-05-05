@@ -74,10 +74,16 @@ class FaceLogin extends Component {
         { this.renderTitle() }
 
         <img id="default-user-avatar" className="img-circle" src={imgSrc} />
-
-        <Dropzone onDrop={this.onDrop.bind(this)}>
-          <div>drop</div>
-        </Dropzone>
+        <div style={{height: 70 + 'px'}}></div>
+        <div className="primary-button-upload">
+          <label>
+            <div className="primary-button-upload">Select Photo</div>
+            <Dropzone onDrop={this.onDrop.bind(this)} style={{display: 'none'}}>
+              <div>drop</div>
+            </Dropzone>
+          </label>
+        </div>
+        <div style={{height: 20 + 'px'}}></div>
 
         <button type="submit" className="primary-button" onClick={this.onSubmit.bind(this)}>
           Upload
