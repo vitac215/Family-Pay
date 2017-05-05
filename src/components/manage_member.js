@@ -40,7 +40,7 @@ export default class ManageMember extends Component {
           <div style={{height: 42 + 'px'}}></div>
           <div style={{marginLeft: '10%'}}>Max One-Time Spending Limit</div>
           <div style={{height: 10 + 'px'}}></div>
-          <input type="text" className="form-control myinput input-in-app" placeholder="Monthly Quota" autoComplete="off" />
+          <input type="text" className="form-control myinput input-in-app" placeholder="One-Time Limit" autoComplete="off" />
           <div style={{height: 40 + 'px'}}></div>
           <Link to="/main" className="primary-button">Done</Link>
 
