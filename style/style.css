@@ -3,6 +3,7 @@
   font-size: 16px;
   font-weight: 400;
   color: #6b7a8f;
+  box-sizing: border-box;
 }
 .container {
   width: 100%;
@@ -27,7 +28,7 @@ form {
   padding-left: 16vw;
   padding-right: 16vw;
 }
-input[type="text"] {
+#username-input {
   background: rgba(0, 0, 0, 0);
   border: none;
   outline: none;
@@ -39,7 +40,7 @@ input[type="text"] {
   border-radius: 0;
   margin-bottom: 45px;
 }
-input[type="password"] {
+#password-input {
   background: rgba(0, 0, 0, 0);
   border: none;
   outline: none;
@@ -51,19 +52,19 @@ input[type="password"] {
   border-radius: 0;
   margin-bottom: 55px;
 }
-input[type="text"]::placeholder {
+#username-input::placeholder {
   color: white;
   font-weight: 300;
 }
-input[type="password"]::placeholder {
+#password-input::placeholder {
   color: white;
   font-weight: 300;
 }
-input[type="text"]:focus {
+#username-input:focus {
   border-bottom: 1px solid white;
   box-shadow: none;
 }
-input[type="password"]:focus {
+#password-input:focus {
   border-bottom: 1px solid white;
   box-shadow: none;
 }
@@ -136,9 +137,18 @@ input[type="password"]:focus {
   font-weight: 700;
   color: #6b7a8f;
 }
-.r16d {
+.l16d {
   color: #dcc7aa;
+  font-weight: 300;
   text-decoration: underline;
+}
+.t16 {
+  font-weight: 300;
+  color: #6b7a8f;
+}
+.r14w {
+  color: white;
+  font-size: 13px;
 }
 /*end default font settings*/
 
@@ -163,6 +173,86 @@ input[type="password"]:focus {
 }
 #container-under {
   margin-top: 44px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.myrow {
+  display: flex;
+  flex-direction: row;
+}
+.bar {
+  border-radius: 7.5px;
+  border: 1px solid #6b7a8f;
+  height: 15px;
+  background-color: none;
+  padding: 0;
+}
+.inner-bar {
+  border-radius: 7.5px;
+  border: none;
+  width: 50%;
+  height: 100%;
+  background-color: #6b7a8f;
+  text-align: right;
+  padding-right: 10px;
+}
+.two-button {
+  justify-content: center;
+}
+.two-button button {
+  background-color: #f7c331;
+  color: white;
+  width: 100px;
+  height: 25px;
+  line-height: 23px;
+  text-align: center;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+}
+.a-member {
+  border-bottom: 1px solid #e6e6e6;
+}
+.transaction-record-text-date {
+  font-size: 14px;
+  color: #b9b9b9;
+}
+
+/*Add Member*/
+.nav-big {
+  background-color: #6b7a8f;
+  width: 100%;
+  height: 158px;
+}
+.nav-title {
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  line-height: 44px;
+}
+.nav-big img {
+  border-radius: 50%;
+  position: absolute;
+  top: 52px;
+  left: calc(50vw - 60px);
+}
+.input-in-app {
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: #6b7a8f;
+  width: 80%;
+  font-weight: 300;
+  border-bottom: 1px solid #6b7a8f;
+  border-radius: 0;
+}
+.input-in-app::placeholder {
+  color: #6b7a8f;
+  font-weight: 300;
+}
+.input-in-app:focus {
+  border-bottom: 1px solid #6b7a8f;
+  box-shadow: none;
 }
