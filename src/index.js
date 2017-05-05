@@ -20,6 +20,7 @@ import AdminDashboard from './components/admin_dashboard';
 import AddMember from './components/add_member';
 import ManageMember from './components/manage_member';
 import ViewDetail from './components/view_detail';
+import MainChild from './components/main_child';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
@@ -45,6 +46,7 @@ ReactDOM.render(
         <Route path="/add_member" component={AddMember} />
         <Route path="/manage_member" component={ManageMember} />
         <Route path="/view_detail" component={ViewDetail} />
+        <Route path="/main_child" component={MainChild} />
       </Route>
     </Router>
   </Provider>
