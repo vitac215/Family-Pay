@@ -7,6 +7,9 @@ import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
 
 import App from './components/app';
+
+import RequireAuth from './components/require_auth';
+
 import IndexLogin from './components/index_login';
 import FaceLogin from './components/face_login';
 import Main from './components/main';
@@ -23,6 +26,8 @@ ReactDOM.render(
         <IndexRoute component={IndexLogin} />
         <Route path="/face_login" component={FaceLogin} />
         <Route path="/main" component={Main} />
+        {/* <Route path="/main" component={RequireAuth(FaceLogin)} /> */}
+        {/* <Route path="/main" component={RequireAuth(Main)} /> */}
         <Route path="/admin_dashboard" component={AdminDashboard} />
       </Route>
     </Router>

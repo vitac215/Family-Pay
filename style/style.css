@@ -100,7 +100,7 @@ input[type="password"]:focus {
 }
 #default-user-avatar {
   width: 34vw;
-  height: auto;
+  height: 34vw;
   margin: 0 auto;
   display: block;
 }

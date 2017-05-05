@@ -9,6 +9,7 @@ class FaceLogin extends Component {
   };
 
   onSubmit() {
+    console.log("onsubmit");
     let username = localStorage.getItem('username');
     if (username && this.props.file) {
       let image = this.props.file;
@@ -22,7 +23,7 @@ class FaceLogin extends Component {
   onImageChange(e) {
     let reader = new FileReader();
     let file = e.target.files[0];
-    // console.log("file", file);
+    console.log("file", file);
     // console.log('file size', file.size/1024/1024);
     let fileSize = file.size/1024/1024;
     if (fileSize >= 2) {
@@ -40,15 +41,38 @@ class FaceLogin extends Component {
     }
   }
 
+  renderTitle() {
+    // no loaded image
+    if (!this.props.file) {
+      return (
+        <div>
+          <div id="facerecogfirst-hello">Hello,</div>
+          <div id="facerecogfirst-hello1">You can login with your face now!</div>
+        </div>
+      )
+    }
+    // loaded image
+    else {
+      return (
+        <div>
+          <div id="facerecogfirst-hello">Perfect!</div>
+          <div id="facerecogfirst-hello1">Let's upload it!</div>
+        </div>
+      )
+    }
+  }
+
   render() {
     const { handleSubmit } = this.props;
+    var imgSrc = "/img/default-user-avatar.svg";
 
     return (
       <div id="inner-container">
-        <div id="facerecogfirst-hello">Hello,</div>
-        <div id="facerecogfirst-hello1">You can login with your face now!</div>
-        {/* <img src={require('img/user.png')}></img>  */}
-        <img id="default-user-avatar" src="/img/default-user-avatar.svg" />
+
+        { this.renderTitle() }
+
+
+        <img id="default-user-avatar" className="img-circle" src={this.props.file ? this.props.file : imgSrc} />
         <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
           <div id="upload-photo-div">
             <div style={{height: 90 + 'px'}}></div>
@@ -65,10 +89,7 @@ class FaceLogin extends Component {
           </div>
           <div style={{height: 20 + 'px'}}></div>
           <div>
-          <button
-            type="submit"
-            className="primary-button"
-            onClick={this.onSubmit.bind(this)}>
+          <button type="submit" className="primary-button">
             Upload
           </button>
           </div>

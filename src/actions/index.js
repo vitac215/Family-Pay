@@ -6,7 +6,7 @@ import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE } from './types';
 // Action type
 export const LOGIN = 'LOGIN';
 
-const ROOT_URL = 'http://10.141.93.202:3000/api';
+const ROOT_URL = 'http://10.141.95.142:3000/api';
 
 export function loginAction({ username, password }) {
   return function(dispatch) {
@@ -38,22 +38,27 @@ export function uploadImg(file) {
 }
 
 export function faceLogin({ username, image }) {
+  username = 'whdawn'; // to be deleted
   return function(dispatch) {
     console.log("face login");
     console.log("username", username);
     console.log("image", image);
     axios.post(`${ROOT_URL}/compare_faces`, { username, image })
       .then(response => {
-        if (response.message === success) {
+        // if (response.message === 'Success') {
+          console.log("faceLogin res", response);
           //   - update state to indicate that user is authenticated
           dispatch({ type: AUTH_USER });
           //   - update state to indicate the type of the user
-          //   check
-          dispatch({ type: response.user_type });
+          let user_type = response.user_type;
+          dispatch({ type: user_type.toUpperCase() });
           browserHistory.push('/main');
-        } else {
-          dispatch(authError('You don\'t seem to be a registered user'));
-        }
+        // } else {
+        //   dispatch(authError('You don\'t seem to be a registered user'));
+        // }
+      })
+      .catch(() => {
+        alert('You don\'t seem to be a registered user');
       });
   }
 }
