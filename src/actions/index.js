@@ -13,24 +13,19 @@ export function loginAction({ username, password }) {
     axios.post(`${ROOT_URL}/login`, { username, password })
       .then(response => {
         console.log('message', response.message);
-        // if (response.message === 'Success') {
-          // request is good,
-          //   - save token
-          localStorage.setItem('username', response.data.username);
-          localStorage.setItem('token', response.data.token);
-          //   - redirect to /face_login
-          browserHistory.push('/face_login');
-        // } else {
-        //   // show an error to the user
-        //   dispatch(authError('The username or the password is incorrect.'));
-        // }
+        // request is good,
+        //   - save token
+        localStorage.setItem('username', response.data.username);
+        localStorage.setItem('token', response.data.token);
+        //   - redirect to /face_login
+        browserHistory.push('/face_login');
       })
-      .catch((response) => {
-        console.log('fail response', response);
+      .catch((error) => {
         // If request is bad...
         // - Show an error to the user
-        // dispatch(authError('Server error'));
-        dispatch(authError(response.error));
+        // dispatch(authError('The username or password is wrong'));
+        // dispatch(authError(error));
+        alert('The username or password is wrong');
       });
   }
 }
@@ -42,8 +37,11 @@ export function uploadImg(file) {
   }
 }
 
-export function faceLogin(image) {
+export function faceLogin({ username, image }) {
   return function(dispatch) {
+    console.log("face login");
+    console.log("username", username);
+    console.log("image", image);
     axios.post(`${ROOT_URL}/compare_faces`, { username, image })
       .then(response => {
         if (response.message === success) {
