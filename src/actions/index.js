@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE, SPENT, LIMIT } from './types';
 
 // Action type
 export const LOGIN = 'LOGIN';
@@ -76,5 +76,23 @@ export function authError(error) {
   return {
     type: AUTH_ERROR,
     payload: error
+  }
+}
+
+export function fetchMessage() {
+  return function(dispatch) {
+    axios.get(ROOT_URL, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+      .then(response => {
+        dispatch({
+          type: SPENT,
+          payload: response.data.spent,
+        });
+        dispatch({
+          type: LIMIT,
+          payload: response.data.limit,
+        });
+      });
   }
 }
