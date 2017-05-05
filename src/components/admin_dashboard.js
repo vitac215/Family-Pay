@@ -22,19 +22,43 @@ export default class AdminDashboard extends Component {
               <div className="col-xs-3 col-sm-3">
                 <img className="member-photo-md" src="" width="60px" height="60px" />
               </div>
-              <div className="col-xs-9 col-sm-9">
+              <div className="col-xs-9 col-sm-9" style={{padding: 0 + 'px'}}>
                 <div style={{height: 5 + 'px'}}></div>
                 <div>
                   <span>Noah</span>
                   <span>&ensp;&ensp;&ensp;</span>
-                  <span className="r16d">1 Request</span>
+                  <span className="l16d">1 Request</span>
                 </div>
-                <div style={{height: 18 + 'px'}}></div>
+                <div style={{height: 10 + 'px'}}></div>
                 <div className="row">
-                  <div className="col-xs-2">0</div>
-                  <div className="col-xs-8"></div>
-                  <div className="col-xs-2">1000</div>
+                  <div className="col-xs-2 t16">0&ensp;&ensp;&ensp;</div>
+                  <div className="col-xs-7 bar">
+                    <div className="inner-bar r14w">$300</div>
+                  </div>
+                  <div className="col-xs-2 t16">1000</div>
                 </div>
+              </div>
+            </div>
+            <div style={{height: 20 + 'px'}}></div>
+            <div className="myrow two-button">
+              <button>Manage</button>
+              <div style={{width: 15 + '%'}}></div>
+              <button>View Detail</button>
+            </div>
+            <div style={{height: 20 + 'px'}}></div>
+          </div>
+          <div style={{height: 20 + 'px'}}></div>
+          <div className="transaction-container">
+            <div className="r16">Transaction History</div>
+            <div style={{height: 16 + 'px'}}></div>
+            <div className="row">
+              <div className="col-xs-2">
+                <img src="" className="transaction-photo" width="40px" height="40px" />
+              </div>
+              <div className="col-xs-10 transaction-record-text">
+                <div>Noah paid Jacob $20</div>
+                <div className="transaction-record-text-date">5 days ago</div>
+                <div style={{height: 11 + 'px'}}></div>
               </div>
             </div>
           </div>

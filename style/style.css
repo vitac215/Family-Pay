@@ -3,6 +3,7 @@
   font-size: 16px;
   font-weight: 400;
   color: #6b7a8f;
+  box-sizing: border-box;
 }
 .container {
   width: 100%;
@@ -136,9 +137,18 @@ input[type="password"]:focus {
   font-weight: 700;
   color: #6b7a8f;
 }
-.r16d {
+.l16d {
   color: #dcc7aa;
+  font-weight: 300;
   text-decoration: underline;
+}
+.t16 {
+  font-weight: 300;
+  color: #6b7a8f;
+}
+.r14w {
+  color: white;
+  font-size: 13px;
 }
 /*end default font settings*/
 
@@ -163,6 +173,47 @@ input[type="password"]:focus {
 }
 #container-under {
   margin-top: 44px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.myrow {
+  display: flex;
+  flex-direction: row;
+}
+.bar {
+  border-radius: 7.5px;
+  border: 1px solid #6b7a8f;
+  height: 15px;
+  background-color: none;
+  padding: 0;
+}
+.inner-bar {
+  border-radius: 7.5px;
+  border: none;
+  width: 50%;
+  height: 100%;
+  background-color: #6b7a8f;
+  text-align: right;
+  padding-right: 10px;
+}
+.two-button {
+  justify-content: center;
+}
+.two-button button {
+  background-color: #f7c331;
+  color: white;
+  width: 100px;
+  height: 25px;
+  line-height: 23px;
+  text-align: center;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+}
+.a-member {
+  border-bottom: 1px solid #e6e6e6;
+}
+.transaction-record-text-date {
+  font-size: 14px;
+  color: #b9b9b9;
 }
