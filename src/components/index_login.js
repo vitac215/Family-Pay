@@ -9,16 +9,6 @@ class IndexLogin extends Component {
     this.props.loginAction({ username, password });
   }
 
-  renderAlert() {
-    if (this.props.errorMsg) {
-      return (
-        <div className="alert alert-danger">
-          {this.props.errorMsg}
-        </div>
-      );
-    }
-  }
-
   render() {
     const { handleSubmit } = this.props;
     const { fields: {username, password} } = this.props;
@@ -40,8 +30,6 @@ class IndexLogin extends Component {
               {password.touched ? password.error : ''}
             </div>
           </div>
-
-          {this.renderAlert()}
 
           <button type="submit" className="primary-button">Next</button>
         </form>
