@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE, SPENT, LIMIT } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE, CHILDREN_INFO, SPENT, LIMIT } from './types';
 
 import request from 'superagent';
 
@@ -85,6 +85,35 @@ export function faceLogin(file) {
         dispatch({ type: PARENT });
         //   - save first name
         localStorage.setItem('name', response.data.name);
+        // Check if there's any children
+        if (response.children) {
+          //   - update all chidlren list info
+          dispatch(allChildren(response.children));
+          //   - redirect to main scene
+          browserHistory.push('/main');
+        }
+        else {
+          browserHistory.push('/add_memeber');
+        }
+
+      } else {
+        dispatch(authError('You don\'t seem to be a registered user'));
+      }
+    });
+  }
+}
+
+export function addMember(file) {
+  return function(dispatch) {
+    console.log("add member");
+    console.log("file", file);
+    var req=request
+              .post('http://10.141.95.142:3000/api/add_memeber')
+              .send(file);
+    req.end(function(err, response) {
+      if (response.message === 'Success') {
+        console.log("addMemeber res", response);
+
         //   - redirect to main scene
         browserHistory.push('/main');
       } else {
@@ -98,6 +127,13 @@ export function authError(error) {
   return {
     type: AUTH_ERROR,
     payload: error
+  }
+}
+
+export function allChildren(children) {
+  return {
+    type: CHILDREN_INFO,
+    payload: children
   }
 }
 
