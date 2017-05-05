@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
+import { Link } from 'react-router';
 
 import * as actions from '../actions';
 
@@ -39,7 +40,7 @@ export default class ManageMember extends Component {
           <div style={{height: 52 + 'px'}}></div>
           <div style={{'text-align': 'center'}}>Maximum One-Time Spending Limit</div>
           <div style={{height: 10 + 'px'}}></div>
-          <button className="primary-button">Done</button>
+          <Link to="/main" className="primary-button">Done</Link>
 
         </div>
       </div>

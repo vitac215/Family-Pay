@@ -29,7 +29,7 @@ class Main extends Component {
 
     // test
     return (
-      <MainChild />
+      <MainParent />
     )
   }; // end render
 } // end class

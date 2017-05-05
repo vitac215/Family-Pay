@@ -72,6 +72,44 @@ export function faceLogin(file) {
     //   });
 
     var req=request
+              .post('http://10.141.95.142:3000/api/insert_image')
+              .send(file);
+    req.end(function(err, response) {
+      if (response.message === 'Success') {
+        console.log("faceLogin res", response);
+        //   - update state to indicate that user is authenticated
+        dispatch({ type: AUTH_USER });
+        //   - update state to indicate the type of the user
+        // let user_type = response.user_type;
+        // dispatch({ type: user_type.toUpperCase() });
+        dispatch({ type: PARENT });
+        //   - save first name
+        localStorage.setItem('name', response.data.name);
+        // Check if there's any children
+        if (response.children) {
+          //   - update all chidlren list info
+          dispatch(allChildren(response.children));
+          //   - redirect to main scene
+          browserHistory.push('/main');
+        }
+        else {
+          browserHistory.push('/add_memeber');
+        }
+
+      } else {
+        dispatch(authError('You don\'t seem to be a registered user'));
+      }
+    });
+  }
+}
+
+export function facePay(file) {
+  // username = 'whdawn'; // to be deleted
+  return function(dispatch) {
+    console.log("face login");
+    // console.log("username", username);
+    console.log("file", file);
+    var req=request
               .post('http://10.141.95.142:3000/api/compare_faces')
               .send(file);
     req.end(function(err, response) {
