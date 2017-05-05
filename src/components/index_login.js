@@ -18,14 +18,14 @@ class IndexLogin extends Component {
         <img className="logo" src="/img/logo.svg" />
         <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
           <div className="form-group">
-            <input type="text" className="form-control myinput" {...username} placeholder="Username" autoComplete="off" />
+            <input type="text" id="username-input" className="form-control myinput" {...username} placeholder="Username" autoComplete="off" />
             <div className="text-help">
               {username.touched ? username.error : ''}
             </div>
           </div>
 
           <div className="form-group">
-            <input type="password" className="form-control myinput" {...password} placeholder="Password" autoComplete="off" />
+            <input type="password" id="password-input" className="form-control myinput" {...password} placeholder="Password" autoComplete="off" />
             <div className="text-help">
               {password.touched ? password.error : ''}
             </div>

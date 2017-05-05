@@ -15,6 +15,7 @@ import FaceLogin from './components/face_login';
 import Main from './components/main';
 
 import AdminDashboard from './components/admin_dashboard';
+import AddMember from './components/add_member';
 
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -29,6 +30,7 @@ ReactDOM.render(
         {/* <Route path="/main" component={RequireAuth(FaceLogin)} /> */}
         {/* <Route path="/main" component={RequireAuth(Main)} /> */}
         <Route path="/admin_dashboard" component={AdminDashboard} />
+        <Route path="/add_member" component={AddMember} />
       </Route>
     </Router>
   </Provider>
