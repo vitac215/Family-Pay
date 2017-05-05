@@ -3,27 +3,19 @@ import { reduxForm } from 'redux-form';
 
 import * as actions from '../actions';
 
-export default class AddMember extends Component {
+export default class ManageMember extends Component {
 
   render() {
 
     return (
       <div>
         <div className="nav-big">
-          <div className="nav-title">Add Member</div>
-
-          <label>
-            <img src="" className="nav-big-photo" width="120px" height="120px" />
-            <input
-              id="file-upload-input"
-              type="file"
-              accept="image/*"
-              capture="camera"
-              />
-          </label>
+          <div className="nav-title">Manage Member</div>
+          <img src="" className="nav-big-photo" width="120px" height="120px" />
         </div>
-
         <img className="hamburger" src="/img/hamburger.svg" />
+        <div style={{height: 20 + 'px'}}></div>
+        <div style={{textAlign: 'center'}}>Noah</div>
         <div id="container-under">
           <input type="text" className="form-control myinput input-in-app" placeholder="Member's Name" autoComplete="off" />
           <div style={{height: 52 + 'px'}}></div>
