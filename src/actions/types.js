@@ -6,3 +6,5 @@ export const PARENT = 'parent';
 export const CHILD = 'child';
 
 export const FILE = 'file';
+
+export const SPENT = 'child_data';

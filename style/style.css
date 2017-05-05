@@ -98,7 +98,7 @@ input[type="password"]:focus {
   text-align: center;
   padding-bottom: 50px;
 }
-#default-user-avatar {
+#default-user-avatar, .user-avatar {
   width: 34vw;
   height: 34vw;
   margin: 0 auto;
