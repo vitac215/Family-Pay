@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE, CHILDREN_INFO, SPENT, LIMIT } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE, CHILDREN_INFO, SPENT, LIMIT, PARENT, CHILDREN } from './types';
 
 import request from 'superagent';
 
@@ -75,7 +75,7 @@ export function faceLogin(file) {
               .post('http://10.141.95.142:3000/api/insert_image')
               .send(file);
     req.end(function(err, response) {
-      if (response.message === 'Success') {
+      // if (response.message === 'Success') {
         console.log("faceLogin res", response);
         //   - update state to indicate that user is authenticated
         dispatch({ type: AUTH_USER });
@@ -83,8 +83,9 @@ export function faceLogin(file) {
         // let user_type = response.user_type;
         // dispatch({ type: user_type.toUpperCase() });
         dispatch({ type: PARENT });
-        //   - save first name
-        localStorage.setItem('name', response.data.name);
+        // //   - save first name
+        // localStorage.setItem('name', response.data.name);
+        console.log(response.children);
         // Check if there's any children
         if (response.children) {
           //   - update all chidlren list info
@@ -93,12 +94,12 @@ export function faceLogin(file) {
           browserHistory.push('/main');
         }
         else {
-          browserHistory.push('/add_memeber');
+          browserHistory.push('/add_member');
         }
 
-      } else {
-        dispatch(authError('You don\'t seem to be a registered user'));
-      }
+      // } else {
+      //   dispatch(authError('You don\'t seem to be a registered user'));
+      // }
     });
   }
 }
