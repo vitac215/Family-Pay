@@ -37,9 +37,11 @@ export function uploadImg(file) {
   }
 }
 
-export function faceLogin(image) {
+export function faceLogin({ username, image }) {
   return function(dispatch) {
     console.log("face login");
+    console.log("username", username);
+    console.log("image", image);
     axios.post(`${ROOT_URL}/compare_faces`, { username, image })
       .then(response => {
         if (response.message === success) {
