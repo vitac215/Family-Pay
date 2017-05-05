@@ -3,6 +3,8 @@ import { browserHistory } from 'react-router';
 
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FILE, SPENT, LIMIT } from './types';
 
+import request from 'superagent';
+
 // Action type
 export const LOGIN = 'LOGIN';
 
@@ -37,38 +39,58 @@ export function uploadImg(file) {
   }
 }
 
-export function faceLogin({ username, image }) {
-  username = 'whdawn'; // to be deleted
+export function faceLogin(file) {
+  // username = 'whdawn'; // to be deleted
   return function(dispatch) {
     console.log("face login");
-    console.log("username", username);
-    console.log("image", image);
-    console.log("image type", image.type);
-    axios.post(`${ROOT_URL}/compare_faces`,
-      { username, image },
-      {headers: {'Content-Type': 'multipart/form-data'}}
-    )
-      .then(response => {
-        // if (response.message === 'Success') {
-          console.log("faceLogin res", response);
-          //   - update state to indicate that user is authenticated
-          dispatch({ type: AUTH_USER });
-          //   - update state to indicate the type of the user
-          //   check
-          let user_type = response.user_type;
-          dispatch({ type: user_type.toUpperCase() });
-          //   - save first name
-          //   check
-          localStorage.setItem('firstName', response.data.firstName);
-          //   - redirect to main scene
-          browserHistory.push('/main');
-        // } else {
-        //   dispatch(authError('You don\'t seem to be a registered user'));
-        // }
-      })
-      .catch(() => {
-        alert('You don\'t seem to be a registered user');
-      });
+    // console.log("username", username);
+    console.log("file", file);
+    // axios.post(`${ROOT_URL}/compare_faces`,
+    //   { username, image },
+    //   // {headers: {'Content-Type': 'multipart/form-data'}}
+    // )
+      // .then(response => {
+      //   if (response.message === 'Success') {
+      //     console.log("faceLogin res", response);
+      //     //   - update state to indicate that user is authenticated
+      //     dispatch({ type: AUTH_USER });
+      //     //   - update state to indicate the type of the user
+      //     //   check
+      //     let user_type = response.user_type;
+      //     dispatch({ type: user_type.toUpperCase() });
+      //     //   - save first name
+      //     //   check
+      //     localStorage.setItem('firstName', response.data.firstName);
+      //     //   - redirect to main scene
+      //     browserHistory.push('/main');
+      //   } else {
+      //     dispatch(authError('You don\'t seem to be a registered user'));
+      //   }
+      // })
+    //   .catch(() => {
+    //     alert('You don\'t seem to be a registered user');
+    //   });
+
+    var req=request
+              .post('http://10.141.95.142:3000/api/compare_faces')
+              .send(file);
+    req.end(function(err, response) {
+      if (response.message === 'Success') {
+        console.log("faceLogin res", response);
+        //   - update state to indicate that user is authenticated
+        dispatch({ type: AUTH_USER });
+        //   - update state to indicate the type of the user
+        // let user_type = response.user_type;
+        // dispatch({ type: user_type.toUpperCase() });
+        dispatch({ type: PARENT });
+        //   - save first name
+        localStorage.setItem('name', response.data.name);
+        //   - redirect to main scene
+        browserHistory.push('/main');
+      } else {
+        dispatch(authError('You don\'t seem to be a registered user'));
+      }
+    });
   }
 }
 
