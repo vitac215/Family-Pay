@@ -1,39 +1,103 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
+import Dropzone from 'react-dropzone';
 
 import * as actions from '../actions';
 
-export default class AddMember extends Component {
+class AddMember extends Component {
+
+  onDrop(files) {
+    var file = new FormData();
+    let username = localStorage.getItem('username');
+    file.append('name', files[0], username);
+    let fileContent = file.get('name');
+    // Check size
+    if (fileContent.size/1024/1024 >= 2) {
+      alert("Image is too big! Please upload an image that's less than 2MB");
+      file.delete('name', files[0]);
+      console.log('file after delete', file.get('name'));
+    } else {
+      this.props.uploadImg(file);
+    }
+  }
+
+  onSubmit({name, quota, limit}) {
+    console.log("onsubmit");
+    console.log("file", this.props.file);
+    if (this.props.file) {
+      let file = this.props.file;
+      let fileContent = file.get('name');
+      fileContent.childName = name;
+      fileContent.quota = quota;
+      fileContent.limit = limit;
+      fileContent.user_type = 'Child';
+      console.log('file content', fileContent);
+      this.props.addMember(file);
+    }
+    else {
+      alert("No image has been loaded yet");
+    }
+  }
 
   render() {
+    var imgSrc = "/img/user2.png";
+    if (this.props.file) {
+      imgSrc = "/img/checkmark.png";
+    }
+
+    const { handleSubmit } = this.props;
+    const { fields: {name, quota, limit} } = this.props;
 
     return (
       <div>
         <div className="nav-big">
           <div className="nav-title">Add Member</div>
-
-          <label>
-            <img src="" className="nav-big-photo" width="120px" height="120px" />
-            <input
-              id="file-upload-input"
-              type="file"
-              accept="image/*"
-              capture="camera"
-              />
-          </label>
+            <img src={imgSrc} className="nav-big-photo" />
         </div>
-
         <img className="hamburger" src="/img/hamburger.svg" />
-        <div id="container-under">
-          <input type="text" className="form-control myinput input-in-app" placeholder="Member's Name" autoComplete="off" />
-          <div style={{height: 52 + 'px'}}></div>
-          <div style={{'text-align': 'center'}}>Monthly Quota of This Member</div>
-          <div style={{height: 10 + 'px'}}></div>
-          <input type="text" className="form-control myinput input-in-app" placeholder="Monthly Quota" autoComplete="off" />
-          <div style={{height: 52 + 'px'}}></div>
-          <div style={{'text-align': 'center'}}>Maximum One-Time Spending Limit</div>
-          <div style={{height: 10 + 'px'}}></div>
-          <button className="primary-button">Done</button>
+
+
+        <div>
+          <form
+            className="form-non-style"
+            onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
+            <Dropzone
+              className="nav-big-photo"
+              onDrop={this.onDrop.bind(this)} >
+            </Dropzone>
+
+            <div id="container-under">
+              <input type="text"
+                className="form-control myinput input-in-app"
+                placeholder="Member's Name"
+                autoComplete="off"
+                {...name}/>
+
+              <div style={{height: 52 + 'px'}}></div>
+              <div style={{marginLeft: '10%'}}>Monthly Quota of This Member</div>
+              <div style={{height: 10 + 'px'}}></div>
+              <input type="number"
+                className="form-control myinput input-in-app"
+                placeholder="Monthly Quota"
+                autoComplete="off"
+                {...quota}/>
+
+              <div style={{height: 52 + 'px'}}></div>
+              <div style={{marginLeft: '10%'}}>Max One-Time Spending Limit</div>
+              <div style={{height: 10 + 'px'}}></div>
+              <input type="number"
+                className="form-control myinput input-in-app"
+                placeholder="One-Time Limit"
+                autoComplete="off"
+                {...limit}/>
+
+              <button
+                className="primary-button add_member_done">
+                Done
+              </button>
+            </div>
+
+          </form>
 
         </div>
       </div>
@@ -41,13 +105,16 @@ export default class AddMember extends Component {
   }
 } // end of class
 
-// function mapStateToProps(state) {
-//   return { errorMsg: state.auth.error };
-// }
-//
-//
-// export default reduxForm({
-//   form: 'LoginForm',
-//   fields: ['username', 'password'],
-//   validate
-// }, mapStateToProps, actions )(IndexLogin);
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated,
+    errorMsg: state.auth.error,
+    file: state.file.file,
+  };
+}
+
+
+export default reduxForm({
+  form: 'FaceLoginForm',
+  fields: ['name', 'quota', 'limit'],
+}, mapStateToProps, actions )(AddMember);

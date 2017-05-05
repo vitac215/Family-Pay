@@ -101,13 +101,12 @@ function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated,
     errorMsg: state.auth.error,
-    file: state.file.file,
-    base64: state.file.base64,
+    file: state.file.file
   };
 }
 
 
 export default reduxForm({
   form: 'FaceLoginForm',
-  fields: ['username', 'img'],
+  fields: ['img'],
 }, mapStateToProps, actions )(FaceLogin);

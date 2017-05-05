@@ -7,5 +7,7 @@ export const CHILD = 'child';
 
 export const FILE = 'file';
 
+export const CHILDREN_INFO = 'children_info';
+
 export const SPENT = 'spent';
 export const LIMIT = 'limit';

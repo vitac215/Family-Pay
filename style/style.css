@@ -238,11 +238,15 @@ form {
   font-weight: 400;
   line-height: 44px;
 }
-.nav-big img {
+.nav-big img, .nav-big-photo {
   border-radius: 50%;
   position: absolute;
   top: 52px;
   left: calc(50vw - 60px);
+}
+.nav-big-photo {
+  height: 120px;
+  width: 120px;
 }
 .input-in-app {
   margin: 0 auto;
@@ -255,6 +259,7 @@ form {
   font-weight: 300;
   border-bottom: 1px solid #6b7a8f;
   border-radius: 0;
+  padding-left: 0;
 }
 .input-in-app::placeholder {
   color: #6b7a8f;
@@ -263,4 +268,10 @@ form {
 .input-in-app:focus {
   border-bottom: 1px solid #6b7a8f;
   box-shadow: none;
+}
+.add_member_done {
+  margin-top: 50px;
+}
+.form-non-style {
+  padding: 0;
 }
