@@ -12,6 +12,7 @@ class Main extends Component {
   };
 
   render() {
+    console.log("main", this.props.user_type);
     // console.log("main props", this.props);
     // // Adult
     // if (this.props.authenticated && this.props.user_type === PARENT) {
@@ -27,9 +28,13 @@ class Main extends Component {
     // }
 
 
+    // // test
+    // return (
+    //   <MainParent />
+    // )
     // test
     return (
-      <MainParent />
+      <MainChild />
     )
   }; // end render
 } // end class

@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Dropzone from 'react-dropzone';
+import { Link } from 'react-router';
+
 import * as actions from '../actions';
 
 class MainChild extends Component {
@@ -29,7 +32,9 @@ class MainChild extends Component {
           </div>
           <div style={{height: 20 + 'px'}}></div>
           <div className="myrow two-button">
-            <button style={{width: '120px'}}>Make Payment</button>
+
+            <Link to="/payment_success" style={{width: '120px'}}>Make Payment</Link>
+
             <div style={{width: 15 + '%'}}></div>
             <button style={{width: '120px'}}>Send Request</button>
           </div>
