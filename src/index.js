@@ -11,6 +11,8 @@ import IndexLogin from './components/index_login';
 import FaceLogin from './components/face_login';
 import Main from './components/main';
 
+import AdminDashboard from './components/admin_dashboard';
+
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -21,6 +23,7 @@ ReactDOM.render(
         <IndexRoute component={IndexLogin} />
         <Route path="/face_login" component={FaceLogin} />
         <Route path="/main" component={Main} />
+        <Route path="/admin_dashboard" component={AdminDashboard} />
       </Route>
     </Router>
   </Provider>

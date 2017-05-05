@@ -29,24 +29,34 @@ class FaceLogin extends Component {
   render() {
 
       return (
-        <div>
-          <div>Hello!</div>
-          <div>You can login with your face now!</div>
+        <div id="inner-container">
+          <div id="facerecogfirst-hello">Hello,</div>
+          <div id="facerecogfirst-hello1">You can login with your face now!</div>
           {/* <img src={require('img/user.png')}></img>  */}
-
+          <img id="default-user-avatar" src="/img/default-user-avatar.svg" />
           <form onSubmit={this.onSubmit.bind(this)}>
-            <input
-              type="file"
-              accept="image/*"
-              capture="camera"
-              onChange={this.onImageChange.bind(this)}
-            />
+            <div id="upload-photo-div">
+              <div style={{height: 90 + 'px'}}></div>
+              <label>  
+                <div className="primary-button-upload">Choose Photo</div>
+                <input
+                  id="file-upload-input"
+                  type="file"
+                  accept="image/*"
+                  capture="camera"
+                  onChange={this.onImageChange.bind(this)}
+                  />
+              </label>
+            </div>
+            <div style={{height: 20 + 'px'}}></div>
+            <div>
             <button
               type="submit"
-              className="btn btn-primary"
+              className="primary-button"
               onClick={this.onSubmit.bind(this)}>
               Upload
             </button>
+            </div>
           </form>
         </div>
       )

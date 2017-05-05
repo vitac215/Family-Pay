@@ -42,7 +42,6 @@ class IndexLogin extends Component {
           </div>
 
           {this.renderAlert()}
-
           <button type="submit" className="primary-button">Next</button>
         </form>
       </div>
