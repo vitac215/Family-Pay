@@ -11,7 +11,7 @@ export default class ManageMember extends Component {
       <div>
         <div className="nav-big">
           <div className="nav-title">Manage Member</div>
-          <img src="/img/default-user-avatar.svg" className="nav-big-photo" width="120px" height="120px" />
+          <img src="/img/asskid.png" className="nav-big-photo" width="120px" height="120px" />
         </div>
         <img className="hamburger" src="/img/hamburger.svg" />
         <div style={{height: 20 + 'px'}}></div>
