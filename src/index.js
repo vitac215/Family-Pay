@@ -10,7 +10,7 @@ import App from './components/app';
 
 import RequireAuth from './components/require_auth';
 
-import { AUTH_USER } from './actions/types';
+import { AUTH_USER, UNAUTH_USER } from './actions/types';
 
 import IndexLogin from './components/index_login';
 import FaceLogin from './components/face_login';
@@ -27,21 +27,21 @@ const store = createStoreWithMiddleware(reducers);
 
 const token = localStorage.getItem('token');
 // If we have a token, consider the user to be signed in
+console.log('token',token);
 if (token) {
-  // we need to update application state
   store.dispatch({ type: AUTH_USER });
+} else {
+  store.dispatch({ type: UNAUTH_USER });
 }
 
-
 ReactDOM.render(
+
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={IndexLogin} />
         <Route path="/face_login" component={FaceLogin} />
         <Route path="/main" component={Main} />
-        {/* <Route path="/main" component={RequireAuth(FaceLogin)} /> */}
-        {/* <Route path="/main" component={RequireAuth(Main)} /> */}
         <Route path="/add_member" component={AddMember} />
         <Route path="/manage_member" component={ManageMember} />
         <Route path="/view_detail" component={ViewDetail} />

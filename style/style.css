@@ -21,7 +21,7 @@
   width: 30%;
   height: auto;
   padding-top: 25vh;
-  padding-bottom: 22vh;
+  padding-bottom: 15vh;
 }
 form {
   margin: auto;
@@ -276,4 +276,7 @@ form {
 }
 .form-non-style {
   padding: 0;
+}
+.login_button {
+  margin-top: 15px;
 }

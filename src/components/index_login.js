@@ -1,17 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
+import { Link } from 'react-router';
 
 import * as actions from '../actions';
 
 class IndexLogin extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
 
   onSubmit({ username, password }) {
     this.props.loginAction({ username, password });
   }
 
   render() {
+    console.log("login props", this.props);
     const { handleSubmit } = this.props;
     const { fields: {username, password} } = this.props;
+
 
     return (
       <div id="inner-container">
@@ -30,11 +36,16 @@ class IndexLogin extends Component {
               {password.touched ? password.error : ''}
             </div>
           </div>
+
           <button type="submit" className="primary-button">Next</button>
+
+          { this.props.authenticated &&
+            <Link to="/face_login" className="primary-button login_button">Login with your face</Link>
+          }
         </form>
       </div>
-    );
-  }
+    )
+  };
 } // end of class
 
 function validate(values) {
@@ -52,7 +63,10 @@ function validate(values) {
 
 
 function mapStateToProps(state) {
-  return { errorMsg: state.auth.error };
+  return {
+    authenticated: state.auth.authenticated,
+    errorMsg: state.auth.error
+  };
 }
 
 
