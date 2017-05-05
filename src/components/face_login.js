@@ -56,7 +56,7 @@ class FaceLogin extends Component {
       return (
         <div>
           <div id="facerecogfirst-hello">Perfect!</div>
-          <div id="facerecogfirst-hello1">Let's upload it!</div>
+          <div id="facerecogfirst-hello1">Let&prime;s upload it!</div>
         </div>
       )
     }
