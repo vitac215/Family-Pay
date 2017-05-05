@@ -9,29 +9,32 @@ class FaceLogin extends Component {
   };
 
   onSubmit() {
+    console.log("here");
     let username = localStorage.getItem('username');
     let file = this.props.file;
-    console.log("file", file);
-    console.log('file size', file.size/1024/1024);
-    let fileSize = file.size/1024/1024;
     if (username !== null && fileSize < 2) {
       this.props.faceLogin({ username, file });
     }
-    else if (fileSize >= 2) {
-      alert("Your image is too big. Please upload an image that's less than 2MB");
-    }
     else {
-      alert("internal error!");
+      alert("Internal error");
     }
   }
 
   onImageChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
-    // convert to base 64
-    let converted_file = reader.readAsDataURL(file);
-    this.props.uploadImg(converted_file);
+    console.log("file", file);
+    console.log('file size', file.size/1024/1024);
+    let fileSize = file.size/1024/1024;
+    if (fileSize >= 2) {
+      alert("Image is too big! Please upload an image that's less than 2MB");
+      e.target.value = "";
+    } else {
+      // convert to base 64
+      let converted_file = reader.readAsDataURL(file);
+      this.props.uploadImg(converted_file);
+    }
   }
 
   render() {
