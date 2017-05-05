@@ -23,7 +23,7 @@ export default class PaymentSuccess extends Component {
               {/* <button type="submit" className="primary-button">
                 Done
               </button> */}
-              <Link to="/main" className="primary-button">Done</Link>
+              <Link to="/main_child" className="primary-button">Done</Link>
           </div>
         </div>
       </div>

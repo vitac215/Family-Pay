@@ -42,7 +42,7 @@ export default class ManageMember extends Component {
           <div style={{height: 10 + 'px'}}></div>
           <input type="text" className="form-control myinput input-in-app" placeholder="One-Time Limit" autoComplete="off" />
           <div style={{height: 40 + 'px'}}></div>
-          <Link to="/main" className="primary-button">Done</Link>
+          <Link to="/main_parent" className="primary-button">Done</Link>
 
         </div>
       </div>

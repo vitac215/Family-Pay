@@ -19,6 +19,7 @@ import Main from './components/main';
 import AddMember from './components/add_member';
 import ManageMember from './components/manage_member';
 import ViewDetail from './components/view_detail';
+import MainParent from './components/main_parent';
 import MainChild from './components/main_child';
 import PaymentSuccess from './components/payment_success';
 
@@ -42,6 +43,8 @@ ReactDOM.render(
         <IndexRoute component={IndexLogin} />
         <Route path="/face_login" component={FaceLogin} />
         <Route path="/main" component={Main} />
+        <Route path="/main_parent" component={MainParent} />
+        <Route path="/main_child" component={MainChild} />
         <Route path="/add_member" component={AddMember} />
         <Route path="/manage_member" component={ManageMember} />
         <Route path="/view_detail" component={ViewDetail} />

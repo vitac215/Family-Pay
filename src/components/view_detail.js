@@ -32,7 +32,7 @@ export default class ViewDetail extends Component {
           </div>
           <div style={{height: 20 + 'px'}}></div>
           <div className="myrow two-button">
-            <Link to="/main" >Manage</Link>
+            <Link to="/main_parent" >Manage</Link>
             <div style={{width: 15 + '%'}}></div>
             <button>View More</button>
           </div>

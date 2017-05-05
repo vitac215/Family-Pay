@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import Dropzone from 'react-dropzone';
+import { Link } from 'react-router';
 
 import * as actions from '../actions';
 
@@ -91,10 +92,12 @@ class AddMember extends Component {
                 autoComplete="off"
                 {...limit}/>
 
-              <button
+              {/* <button
                 className="primary-button add_member_done">
                 Done
-              </button>
+              </button> */}
+
+              <Link to="/main_parent" className="primary-button add_member_done">Done</Link>
             </div>
 
           </form>
