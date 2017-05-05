@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
+import { Link } from 'react-router';
 
 import * as actions from '../actions';
 
@@ -31,7 +32,7 @@ export default class ViewDetail extends Component {
           </div>
           <div style={{height: 20 + 'px'}}></div>
           <div className="myrow two-button">
-            <button>Go Back</button>
+            <Link to="/main" >Manage</Link>
             <div style={{width: 15 + '%'}}></div>
             <button>View More</button>
           </div>

@@ -80,6 +80,8 @@ form {
   border: none;
   outline: none;
   color: white;
+  text-align: center;
+  line-height: 36px;
 }
 
 
@@ -207,7 +209,7 @@ form {
 .two-button {
   justify-content: center;
 }
-.two-button button {
+.two-button button, .two-button a {
   background-color: #f7c331;
   color: white;
   width: 100px;
