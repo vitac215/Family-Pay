@@ -103,6 +103,8 @@ export function faceLogin(file) {
   }
 }
 
+
+// inputs: file, username, childName, quota, limit
 export function addMember(file) {
   return function(dispatch) {
     console.log("add member");
